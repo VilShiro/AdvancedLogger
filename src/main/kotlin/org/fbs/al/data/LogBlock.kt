@@ -1,5 +1,7 @@
 package org.fbs.al.data
 
+import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.fbs.al.Log
 import org.fbs.al.util.LogBuilder
@@ -9,8 +11,15 @@ class LogBlock(
     private val blockName: String,
     private val idAddingStrategy: IdAddingStrategy) {
 
+    @JsonCreator constructor(
+        @JsonProperty("blockName") blockName: String,
+        @JsonProperty("idAddingStrategy") idAddingStrategy: IdAddingStrategy,
+        @JsonProperty("content") logs: ArrayList<Log>) : this(blockName, idAddingStrategy) {
+            this.logs = logs
+    }
+
     @JsonProperty("content")
-    private val logs = ArrayList<Log>()
+    private var logs = ArrayList<Log>()
 
     fun getLogs() : Collection<Log>{
         return Collections.unmodifiableList<Log>(logs)
@@ -63,6 +72,7 @@ class LogBlock(
         return blockName
     }
 
+    @JsonIgnore
     fun getLastIndex() : Long{
         if (idAddingStrategy == IdAddingStrategy.MANUALLY) {
             var last: Long = -2

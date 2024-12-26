@@ -17,12 +17,12 @@ class LogDeserializer private constructor(){
                 SerializingStrategy.JSON -> {
                     val mapper = ObjectMapper()
                     mapper.registerModules(JavaTimeModule())
-                    return mapper.readValue<Log>(File(filename), Log::class.java)
+                    return mapper.readValue<Log>(File("$filename.json"), Log::class.java)
                 }
                 SerializingStrategy.XML -> {
                     val xmlMapper = XmlMapper()
                     xmlMapper.registerModules(JavaTimeModule())
-                    return xmlMapper.readValue<Log>(File(filename), Log::class.java)
+                    return xmlMapper.readValue<Log>(File("$filename.xml"), Log::class.java)
                 }
             }
         }
@@ -33,12 +33,12 @@ class LogDeserializer private constructor(){
                 SerializingStrategy.JSON -> {
                     val mapper = ObjectMapper()
                     mapper.registerModules(JavaTimeModule())
-                    return mapper.readValue<LogBlock>(File(filename), LogBlock::class.java)
+                    return mapper.readValue<LogBlock>(File("$filename.json"), LogBlock::class.java)
                 }
                 SerializingStrategy.XML -> {
                     val xmlMapper = XmlMapper()
                     xmlMapper.registerModules(JavaTimeModule())
-                    return xmlMapper.readValue<LogBlock>(File(filename), LogBlock::class.java)
+                    return xmlMapper.readValue<LogBlock>(File("$filename.xml"), LogBlock::class.java)
                 }
             }
         }
