@@ -3,8 +3,7 @@ import org.fbs.al.data.LogBlock
 import org.fbs.al.data.SerializingStrategy
 import org.fbs.al.util.LogBuilder
 import org.fbs.al.util.LogSerializer
-
-import kotlin.test.Test
+import org.junit.jupiter.api.Test
 
 class Test {
 
