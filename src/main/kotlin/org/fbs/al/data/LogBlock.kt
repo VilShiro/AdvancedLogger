@@ -3,7 +3,6 @@ package org.fbs.al.data
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.fbs.al.Log
 import org.fbs.al.util.LogBuilder
 import java.util.Collections
 
@@ -93,11 +92,7 @@ class LogBlock(
     }
 
     override fun toString(): String {
-        return """
-            BlockName: $blockName
-            Content:
-            ${toString(logs)}
-        """.trimIndent()
+        return "BlockName: $blockName\nContent:\n${toString(logs)}"
     }
 
     private fun toString(logs : ArrayList<Log>) : String{
