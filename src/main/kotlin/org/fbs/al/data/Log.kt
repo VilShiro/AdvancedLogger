@@ -1,13 +1,14 @@
-package org.fbs.al
+package org.fbs.al.data
 
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDateTime
 
 data class Log @JsonCreator constructor (
     @JsonProperty("classPackage") private val classPackage: String,
     @JsonProperty("className") private val className: String,
-    @JsonProperty("date")private val date: LocalDateTime,
+    @JsonProperty("date") @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss") private val date: LocalDateTime,
     @JsonProperty("message") private val message: String,
     @JsonProperty("stackTrace") private val stackTrace: Collection<StackTraceElement>,
     @JsonProperty("uid") private val UID: Long) : Cloneable{
