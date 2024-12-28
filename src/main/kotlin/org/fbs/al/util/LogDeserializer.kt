@@ -3,7 +3,7 @@ package org.fbs.al.util
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import org.fbs.al.Log
+import org.fbs.al.data.Log
 import org.fbs.al.data.LogBlock
 import org.fbs.al.data.SerializingStrategy
 import java.io.File

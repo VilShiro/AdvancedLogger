@@ -1,6 +1,6 @@
 package org.fbs.al.util
 
-import org.fbs.al.Log
+import org.fbs.al.data.Log
 import java.time.LocalDateTime
 import java.util.Collections
 
