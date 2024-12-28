@@ -4,12 +4,20 @@ import com.fasterxml.jackson.databind.Module
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.dataformat.xml.XmlMapper
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import java.io.File
 
 open class Serializer{
 
-    private val MAPPER = ObjectMapper()
-    private val XML_MAPPER = XmlMapper()
+    companion object {
+        private val MAPPER = ObjectMapper()
+        private val XML_MAPPER = XmlMapper()
+    }
+
+    constructor(){
+        MAPPER.registerKotlinModule()
+        XML_MAPPER.registerKotlinModule()
+    }
 
     fun <T> serializeJson(obj: T, fileName: String) : File{
         MAPPER.enable(SerializationFeature.INDENT_OUTPUT);
