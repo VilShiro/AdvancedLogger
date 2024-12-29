@@ -15,13 +15,13 @@ class LogDeserializer private constructor(){
         fun deserializeLog(strategy: SerializingStrategy, filename: String) : Log{
             when(strategy){
                 SerializingStrategy.JSON -> {
-                    val deserializer = Deserializer()
+                    val deserializer = Deserializer(true)
                     deserializer.registerModuleJsonMapper(JavaTimeModule())
                     return deserializer.deserializeJson(File("$filename.json"), Log::class.java)
                 }
                 SerializingStrategy.XML -> {
-                    val deserializer = Deserializer()
-                    deserializer.registerModuleJsonMapper(JavaTimeModule())
+                    val deserializer = Deserializer(true)
+                    deserializer.registerModuleXmlMapper(JavaTimeModule())
                     return deserializer.deserializeXml(File("$filename.xml"), Log::class.java)
                 }
             }
@@ -31,13 +31,13 @@ class LogDeserializer private constructor(){
         fun deserializeLogBlock(strategy: SerializingStrategy, filename: String) : LogBlock{
             when(strategy){
                 SerializingStrategy.JSON -> {
-                    val deserializer = Deserializer()
+                    val deserializer = Deserializer(true)
                     deserializer.registerModuleJsonMapper(JavaTimeModule())
                     return deserializer.deserializeJson(File("$filename.json"), LogBlock::class.java)
                 }
                 SerializingStrategy.XML -> {
-                    val deserializer = Deserializer()
-                    deserializer.registerModuleJsonMapper(JavaTimeModule())
+                    val deserializer = Deserializer(true)
+                    deserializer.registerModuleXmlMapper(JavaTimeModule())
                     return deserializer.deserializeXml(File("$filename.xml"), LogBlock::class.java)
                 }
             }

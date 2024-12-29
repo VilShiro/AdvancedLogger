@@ -14,9 +14,11 @@ class Serializer{
         private val XML_MAPPER = XmlMapper()
     }
 
-    constructor(){
-        MAPPER.registerKotlinModule()
-        XML_MAPPER.registerKotlinModule()
+    constructor(isRegisterKotlin : Boolean){
+        if(isRegisterKotlin) {
+            MAPPER.registerKotlinModule()
+            XML_MAPPER.registerKotlinModule()
+        }
     }
 
     fun <T> serializeJson(obj: T, fileName: String) : File{

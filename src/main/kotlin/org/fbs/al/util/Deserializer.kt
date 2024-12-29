@@ -13,9 +13,11 @@ class Deserializer {
         private val XML_MAPPER = XmlMapper()
     }
 
-    constructor(){
-        MAPPER.registerKotlinModule()
-        XML_MAPPER.registerKotlinModule()
+    constructor(isRegisterKotlin : Boolean){
+        if(isRegisterKotlin) {
+            MAPPER.registerKotlinModule()
+            XML_MAPPER.registerKotlinModule()
+        }
     }
 
     fun <T> deserializeJson(file : File, clazz : Class<T>) : T{

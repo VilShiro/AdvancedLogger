@@ -13,7 +13,7 @@ class LogSerializer private constructor(){
         fun serialize(log: Log, strategy: SerializingStrategy, fileName: String): File {
             when (strategy) {
                 SerializingStrategy.JSON -> {
-                    val serializer = Serializer()
+                    val serializer = Serializer(true)
                     serializer.registerModuleJsonMapper(JavaTimeModule())
 
                     val file = serializer.serializeJson(log, fileName)
@@ -21,7 +21,7 @@ class LogSerializer private constructor(){
                 }
 
                 SerializingStrategy.XML -> {
-                    val serializer = Serializer()
+                    val serializer = Serializer(true)
                     serializer.registerModuleXmlMapper(JavaTimeModule())
 
                     val file = serializer.serializeXml(log, fileName)
@@ -33,7 +33,7 @@ class LogSerializer private constructor(){
         fun serialize(logBlock: LogBlock, strategy: SerializingStrategy, fileName: String): File {
             when (strategy) {
                 SerializingStrategy.JSON -> {
-                    val serializer = Serializer()
+                    val serializer = Serializer(true)
                     serializer.registerModuleJsonMapper(JavaTimeModule())
 
                     val file = serializer.serializeJson(logBlock, fileName)
@@ -41,7 +41,7 @@ class LogSerializer private constructor(){
                 }
 
                 SerializingStrategy.XML -> {
-                    val serializer = Serializer()
+                    val serializer = Serializer(true)
                     serializer.registerModuleXmlMapper(JavaTimeModule())
 
                     val file = serializer.serializeXml(logBlock, fileName)
