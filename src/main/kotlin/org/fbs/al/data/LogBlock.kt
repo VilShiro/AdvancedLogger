@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.fbs.al.util.LogBuilder
-import java.util.Collections
+import java.util.*
 
-class LogBlock(
+open class LogBlock(
     private val blockName: String,
     private val idAddingStrategy: IdAddingStrategy) {
 

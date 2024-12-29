@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDateTime
 
-data class Log @JsonCreator constructor (
+open class Log @JsonCreator constructor (
     @JsonProperty("classPackage") private val classPackage: String,
     @JsonProperty("className") private val className: String,
     @JsonProperty("date") @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss") private val date: LocalDateTime,
