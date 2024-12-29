@@ -5,7 +5,6 @@ import org.fbs.al.data.SerializingStrategy
 import org.fbs.al.util.LogBuilder
 import org.fbs.al.util.LogSerializer
 import org.junit.jupiter.api.Test
-import javax.management.RuntimeErrorException
 
 class Test {
 
