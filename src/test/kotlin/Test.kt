@@ -1,9 +1,11 @@
 import org.fbs.al.data.IdAddingStrategy
+import org.fbs.al.data.Log
 import org.fbs.al.data.LogBlock
 import org.fbs.al.data.SerializingStrategy
 import org.fbs.al.util.LogBuilder
 import org.fbs.al.util.LogSerializer
 import org.junit.jupiter.api.Test
+import javax.management.RuntimeErrorException
 
 class Test {
 
@@ -98,6 +100,31 @@ class Test {
 
         LogSerializer.serialize(block0, SerializingStrategy.JSON, "testLogBlockJsonAuto")
         LogSerializer.serialize(block0, SerializingStrategy.XML, "testLogBlockXmlAuto")
+    }
+
+    @Test
+    fun massiveLogBlockSerializingTest(){
+        val logList = ArrayList<Log>()
+        var st : Array<StackTraceElement>
+        try {
+            throw RuntimeException()
+        }catch (e : RuntimeException){
+            st = e.stackTrace
+        }
+        for(i in 1..10000){
+            val log = LogBuilder()
+               .className("Name$i")
+               .classPackage("dev.test.f")
+               .message("First test message $i")
+               //.stackTrace(st)
+               .getLog()
+            logList.add(log)
+        }
+        val block = LogBlock("massiveBlockAuto", IdAddingStrategy.AUTO)
+        for (log : Log in logList){
+            block.addLog(log)
+        }
+        LogSerializer.serialize(block, SerializingStrategy.JSON, "massiveTestJsonAuto")
     }
 
 }

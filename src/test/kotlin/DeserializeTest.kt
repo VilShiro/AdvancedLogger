@@ -21,4 +21,11 @@ class DeserializeTest {
 
     }
 
+    @Test
+    fun massiveDeserializeLogTest(){
+        val massiveLog = LogDeserializer.deserializeLogBlock(SerializingStrategy.JSON, "massiveTestJsonAuto")
+        println(massiveLog)
+        println(massiveLog.getLogByUID(1L))
+    }
+
 }
