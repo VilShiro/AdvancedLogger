@@ -15,14 +15,14 @@ class LogDeserializer private constructor(){
         fun deserializeLog(strategy: SerializingStrategy, filename: String) : Log{
             when(strategy){
                 SerializingStrategy.JSON -> {
-                    val mapper = ObjectMapper()
-                    mapper.registerModules(JavaTimeModule())
-                    return mapper.readValue<Log>(File("$filename.json"), Log::class.java)
+                    val deserializer = Deserializer()
+                    deserializer.registerModuleJsonMapper(JavaTimeModule())
+                    return deserializer.deserializeJson(File("$filename.json"), Log::class.java)
                 }
                 SerializingStrategy.XML -> {
-                    val xmlMapper = XmlMapper()
-                    xmlMapper.registerModules(JavaTimeModule())
-                    return xmlMapper.readValue<Log>(File("$filename.xml"), Log::class.java)
+                    val deserializer = Deserializer()
+                    deserializer.registerModuleJsonMapper(JavaTimeModule())
+                    return deserializer.deserializeXml(File("$filename.xml"), Log::class.java)
                 }
             }
         }
@@ -31,14 +31,14 @@ class LogDeserializer private constructor(){
         fun deserializeLogBlock(strategy: SerializingStrategy, filename: String) : LogBlock{
             when(strategy){
                 SerializingStrategy.JSON -> {
-                    val mapper = ObjectMapper()
-                    mapper.registerModules(JavaTimeModule())
-                    return mapper.readValue<LogBlock>(File("$filename.json"), LogBlock::class.java)
+                    val deserializer = Deserializer()
+                    deserializer.registerModuleJsonMapper(JavaTimeModule())
+                    return deserializer.deserializeJson(File("$filename.json"), LogBlock::class.java)
                 }
                 SerializingStrategy.XML -> {
-                    val xmlMapper = XmlMapper()
-                    xmlMapper.registerModules(JavaTimeModule())
-                    return xmlMapper.readValue<LogBlock>(File("$filename.xml"), LogBlock::class.java)
+                    val deserializer = Deserializer()
+                    deserializer.registerModuleJsonMapper(JavaTimeModule())
+                    return deserializer.deserializeXml(File("$filename.xml"), LogBlock::class.java)
                 }
             }
         }
