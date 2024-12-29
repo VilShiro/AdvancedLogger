@@ -22,16 +22,6 @@ fun createLog(){
         .classPackage("Your class package like com.company.app") // For example, you have class in package com.company.app
         .className("Your class name like Test") // And for example, in com.company.app you have Test.java class
         // .stackTrace() You can add exception stacktrace to your log
-
-        /*
-        StackTraceElement st[];
-        try{
-            // Your code with exception here
-        }catch(Exception e){
-            st = e.getStackTrace();
-        }
-         */
-
         // .date() You can set data and time to log, by default LogBuilder gets LocalDateTime.now()
         // .uid() You can set UID to your log, default value is '-1'
         .getLog()
