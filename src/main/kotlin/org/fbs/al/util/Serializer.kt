@@ -7,7 +7,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import java.io.File
 
-open class Serializer{
+class Serializer{
 
     companion object {
         private val MAPPER = ObjectMapper()
