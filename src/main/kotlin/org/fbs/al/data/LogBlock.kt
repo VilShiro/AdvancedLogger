@@ -38,20 +38,16 @@ class LogBlock(
     }
 
     fun addLog(log : Log){
-        if (log.getUID() == -1L){
-            val id : Long = if (idAddingStrategy == IdAddingStrategy.AUTO){
-                logs.getLast()?.getUID()?.plus(1L) ?: 0
-            } else{
-                log.getUID()
-            }
+        val id : Long = if (idAddingStrategy == IdAddingStrategy.AUTO){
+            logs.getLast()?.getUID()?.plus(1L) ?: 0
+        } else{
+            log.getUID()
+        }
 
-            logs.add(LogBuilder().copyLog(log)
-                .uid(id)
-                .getLog())
-        }
-        else {
-            logs.add(log)
-        }
+        logs.add(LogBuilder().copyLog(log)
+            .uid(id)
+            .getLog())
+
     }
 
     fun removeLog(log : Log){
