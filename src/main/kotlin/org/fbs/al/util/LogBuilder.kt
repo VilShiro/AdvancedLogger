@@ -57,6 +57,7 @@ class LogBuilder {
         stackTrace = log.getStackTrace()
         message = log.getMessage()
         date = log.getDate()
+        dateSet = true
         return this
     }
 
